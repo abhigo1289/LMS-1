@@ -1,4 +1,4 @@
-package com.controller;
+package com.codeEncryption;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
