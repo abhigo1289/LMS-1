@@ -21,6 +21,17 @@ public class EmpDetails
 	@Column(name="EMPNAME")
 	String empname;
 	
+	@Column(name="EMPID")
+	int empId;
+	
+	public int getEmpId() {
+		return empId;
+	}
+
+	public void setEmpId( int empId) {
+		this.empId = empId;
+	}
+
 	@Column(name="DATEOFJOINING")
 	Date dateOfJoining;
 	
