@@ -3,7 +3,18 @@
 <html>
 <head>
 <title>Login Page</title>
+
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 <style>
+
 .error {
 	padding: 15px;
 	margin-bottom: 20px;
@@ -25,7 +36,7 @@
 }
 
 #login-box {
-	width: 300px;
+	width: 400px;
 	padding: 20px;
 	margin: 100px auto;
 	background: #fff;
@@ -35,44 +46,65 @@
 }
 </style>
 </head>
-<body onload='document.loginForm.username.focus();'>
-
-	<h1>Spring Security Login Form (Database Authentication)</h1>
-
-	<div id="login-box">
-
-		<h3>Login with User Id and Password</h3>
-
-		<c:if test="${not empty error}">
-			<div class="error">${error}</div>
-		</c:if>
-		<c:if test="${not empty msg}">
-			<div class="msg">${msg}</div>
-		</c:if>
-
-		<form name='loginForm'
-			action="<c:url value='/j_spring_security_check' />" method='POST'>
-
-			<table>
-				<tr>
-					<td>User:</td>
-					<td><input type='text' name='empid'></td>
-				</tr>
-				<tr>
-					<td>Password:</td>
-					<td><input type='password' name='emppassword' /></td>
-				</tr>
-				<tr>
-					<td colspan='2'><input name="submit" type="submit"
-						value="submit" /></td>
-				</tr>
-			</table>
-
-			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
-
-		</form>
-	</div>
-
+<body onload='document.loginForm.username.focus();' ng-app="loginApp">
+	<div class="container">
+			<div id="login-box">
+				<div class="col-sm-2"></div>
+				<center><h3>Login</h3></center>
+				<br>
+				<c:if test="${not empty error}">
+					<div class="error">${error}</div>
+				</c:if>
+				<c:if test="${not empty msg}">
+					<div class="msg">${msg}</div>
+				</c:if>
+				<div class="form-container">
+					<form class="form-horizontal" name='loginForm' action="<c:url value='/j_spring_security_check' />" method='POST'>
+					<div class="row">
+						<div class="form-group has-feedback">
+							<div class="col-sm-2"></div>							
+							<!-- <label class="control-label col-sm-4">Username :</label>-->
+							<div class="col-sm-8">
+								<span class="glyphicon glyphicon-user form-control-feedback"></span>
+								<input class="empid form-control " type="text" name="empid"  placeholder="Employee Code" >
+							</div>
+						</div>
+					</div>
+					<div class="row">	
+						<div class="form-group has-feedback">
+							<div class="col-sm-2"></div>
+							<!-- <label class="control-label col-sm-4">Password :</label>-->
+							<div class="col-sm-8">
+								<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+								<input class="emppassword form-control" type='password' name='emppassword' placeholder="Password"/>
+							</div>
+						</div>
+					</div>	
+					<div class="col-sm-2"></div>	
+					<div class="row">
+						<div class="form-group col-xs-8 ">
+							<button type="submit" class="btn btn-primary btn-block">Submit</button>
+						</div>
+					</div>				
+						<!--<table class="table borderless">
+							<tr>
+								<td><label>Username:</label></td>
+								<td><input class="empid form-control" type='text' name='empid'></td>
+							</tr>
+							<tr>
+								<td><label>Password:</label></td>
+								<td><input class="emppassword form-control" type='password' name='emppassword' /></td>
+							</tr>
+							<tr>
+								<td colspan='2'><input name="submit" type="submit"
+									value="submit" /></td>
+							</tr>
+						</table>-->
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+					</form>
+				</div>
+			</div>	
+		</div>
 </body>
 </html>
