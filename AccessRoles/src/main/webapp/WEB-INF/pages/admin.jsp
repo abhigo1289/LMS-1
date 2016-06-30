@@ -1,5 +1,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page session="true"%>
+<%
+	HttpSession ses=request.getSession(false);
+	String empid=(String)ses.getAttribute("empid");
+	if(empid.equals("anonymousUser"))
+	{
+		response.sendRedirect("/LeaveMgt/login");
+	}
+	
+%>
 <html>
 <body>
 <h1>admin</h1>
@@ -17,12 +26,9 @@
 		}
 	</script>
 
-	<c:if test="${pageContext.request.userPrincipal.name != null}">
-		<h2>
-			Welcome : ${pageContext.request.userPrincipal.name} | <a
-				href="javascript:formSubmit()"> Logout</a>
-		</h2>
-	</c:if>
+	<h2>
+				 <a	href="javascript:formSubmit()"> Logout</a>
+			</h2>
 
 </body>
 </html>
