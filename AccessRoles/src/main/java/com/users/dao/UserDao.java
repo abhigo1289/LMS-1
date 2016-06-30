@@ -2,7 +2,8 @@ package com.users.dao;
 
 import com.users.model.User;
 
-public interface UserDao {
+public interface UserDao
+{
 
 	User findByUserName(String empId);
 

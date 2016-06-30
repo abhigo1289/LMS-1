@@ -13,7 +13,7 @@ public class EmpDetailsServiceImpl implements EmpDetailsService
  	public EmpDetails getEmpDetails(int empId) 
  	{
 	 	EmpDetails ed=new EmpDetails();
-	 	ed.setEmpId(12);
+	 	//ed.setEmpId(12);
 	 	ed.setBloodGrp("b+");
 	 	ed.setEmpname("abhishek");
  		return ed;

@@ -22,11 +22,9 @@ public class EmpDetailsRestController {
 	@RequestMapping(value="/empdetails", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<EmpDetails> getEmpDetailsRest(){
 		
-		EmpDetails ed=new EmpDetails();
-	 	ed.setEmpId(12);
-	 	ed.setBloodGrp("b+");
-	 	ed.setEmpname("abhishek");
 		
-		return new ResponseEntity<EmpDetails>(ed, HttpStatus.OK);
+		
+		//return new ResponseEntity<EmpDetails>(ed, HttpStatus.OK);
+		return null;
 	}
 }

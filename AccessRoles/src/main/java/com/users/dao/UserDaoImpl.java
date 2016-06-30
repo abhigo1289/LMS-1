@@ -19,8 +19,8 @@ public class UserDaoImpl implements UserDao {
 	public User findByUserName(String empId) {
 
 		List<User> users = new ArrayList<User>();
-
-		users = sessionFactory.getCurrentSession().createQuery("from User where empId=?").setParameter(0, empId)
+		int id=Integer.parseInt(empId);
+		users = sessionFactory.getCurrentSession().createQuery("from User where empId=?").setParameter(0, id)
 				.list();
 
 		if (users.size() > 0) {

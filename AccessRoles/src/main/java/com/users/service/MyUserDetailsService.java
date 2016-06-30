@@ -26,9 +26,9 @@ public class MyUserDetailsService implements UserDetailsService {
 
 	@Transactional(readOnly=true)
 	@Override
-	public UserDetails loadUserByUsername(final String empId) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
 	
-		com.users.model.User user = userDao.findByUserName(empId);
+		com.users.model.User user = userDao.findByUserName(username);
 		List<GrantedAuthority> authorities = buildUserAuthority(user.getUserRole());
 
 		return buildUserForAuthentication(user, authorities);

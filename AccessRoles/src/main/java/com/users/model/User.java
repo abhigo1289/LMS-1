@@ -14,12 +14,11 @@ import javax.persistence.Table;
 @Table(name = "EMPLOGIN")
 public class User {
 
-	private String empId;
-	
-	
+	private String empId;	
 	private String password;
 	
 	private boolean enabled;
+	
 	private Set<UserRole> userRole = new HashSet<UserRole>(0);
 
 	public User() {
