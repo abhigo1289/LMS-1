@@ -14,6 +14,19 @@ import javax.persistence.Table;
 public class EmpDetails 
 {
 	
+	public EmpDetails(int empId, String empMail, String empname, Date dateOfJoining, String bloodGrp, String gender,
+			double plannedLeaves, double unPlannedLeaves) {
+		super();
+		this.empMail = empMail;
+		this.empname = empname;
+		this.empId = empId;
+		this.dateOfJoining = dateOfJoining;
+		this.bloodGrp = bloodGrp;
+		this.gender = gender;
+		this.plannedLeaves = plannedLeaves;
+		this.unPlannedLeaves = unPlannedLeaves;
+	}
+
 	@Id
 	@Column(name="EMPMAIL")
 	String empMail;

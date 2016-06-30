@@ -19,12 +19,11 @@ public class EmpDetailsRestController {
 	@Autowired
 	EmpDetailsService empDetailsService;
 	
-	@RequestMapping(value="/empdetails", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<EmpDetails> getEmpDetailsRest(){
+	@RequestMapping(value="/emp/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<EmpDetails> getEmpDetailsRest(@PathVariable("id")int empId){
 		
+		EmpDetails emp = empDetailsService.getEmpDetails(empId);
 		
-		
-		//return new ResponseEntity<EmpDetails>(ed, HttpStatus.OK);
-		return null;
+		return new ResponseEntity<EmpDetails>(emp, HttpStatus.OK);
 	}
 }
