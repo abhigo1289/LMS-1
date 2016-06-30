@@ -48,6 +48,7 @@
 </head>
 <body onload='document.loginForm.username.focus();' ng-app="loginApp">
 	<div class="container">
+	<center><h1>Leave Management System</h1></center>
 			<div id="login-box">
 				<div class="col-sm-2"></div>
 				<center><h3>Login</h3></center>
@@ -107,4 +108,8 @@
 			</div>	
 		</div>
 </body>
+<script>
+	var app = angular.module('loginApp',[]);
+	
+</script>
 </html>
