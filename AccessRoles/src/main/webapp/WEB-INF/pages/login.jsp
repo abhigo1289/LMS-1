@@ -86,21 +86,7 @@
 						<div class="form-group col-xs-8 ">
 							<button type="submit" class="btn btn-primary btn-block">Submit</button>
 						</div>
-					</div>				
-						<!--<table class="table borderless">
-							<tr>
-								<td><label>Username:</label></td>
-								<td><input class="empid form-control" type='text' name='empid'></td>
-							</tr>
-							<tr>
-								<td><label>Password:</label></td>
-								<td><input class="emppassword form-control" type='password' name='emppassword' /></td>
-							</tr>
-							<tr>
-								<td colspan='2'><input name="submit" type="submit"
-									value="submit" /></td>
-							</tr>
-						</table>-->
+					</div>	
 						<input type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" />
 					</form>
@@ -108,8 +94,9 @@
 			</div>	
 		</div>
 </body>
+<!-- <script src="/js/app.js"></script> -->
 <script>
-	var app = angular.module('loginApp',[]);
+var app = angular.module('loginApp',[]);
 	
 </script>
 </html>
