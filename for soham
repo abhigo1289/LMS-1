@@ -1,0 +1,56 @@
+<html>
+<head ><script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script> </head>
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<body>
+<div class="content" ng-app="myApp"  ng-controller="MyController">
+
+
+
+        <form>
+          <div class="contact-form mar-top30">
+            <label> <span>Full name</span>
+            <input type="text" class="input_text" ng-model=myForm.name ng-minlength=5 ng-maxlength=12 class=form-control/>
+            </label>
+            <label> <span>Email</span>
+            <input type="text" class="input_text" ng-model=myForm.email ng-minlength=5 ng-maxlength=12 class=form-control/>
+            </label>
+            <label> <span>DOJ</span>
+            <input type="text" class="input_text" ng-model=myForm.doj ng-minlength=5 ng-maxlength=12 class=form-control/>
+            </label>
+			<label> <span>Blood Group</span>
+            <input type="text" class="input_text" ng-model=myForm.bg ng-minlength=5 ng-maxlength=12 class=form-control/>
+            </label>
+			<label> <span>Gender</span>
+            <input type="text" class="input_text" ng-model=myForm.gender ng-minlength=5 ng-maxlength=12 class=form-control/>
+            </label>
+			<label> <span>Planned Leaves</span>
+            <input type="text" class="input_text" ng-model=myForm.pl ng-minlength=5 ng-maxlength=12 class=form-control/>
+            </label>
+			<label> <span>Unplanned Leaves</span>
+            <input type="text" class="input_text" ng-model=myForm.upl ng-minlength=5 ng-maxlength=12 class=form-control/>
+            </label>
+			<center>
+            <label>
+           <button type="submit" class="button"  value="Submit" ng-click="reset()">submit</button>
+            </label>
+			</center>
+          </div>
+		<div  ng-show="showme"> 
+		<p>hiihjihih{{myForm}}</p> 
+		</div>
+        </form>
+		<script>
+			var app = angular.module('myApp', []);
+			app.controller('MyController', function($scope) {
+			   
+				$scope.reset = function() {
+					$scope.showme=$scope.showme;
+					$scope.myForm = angular.copy($scope.master);
+				};
+				$scope.reset();
+			});
+    
+		
+		</script>
+		</body>
+</html>
