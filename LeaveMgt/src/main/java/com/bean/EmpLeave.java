@@ -15,6 +15,11 @@ import javax.persistence.Table;
 @Table(name="EMPLEAVE")
 public class EmpLeave 
 {
+	public EmpLeave() 
+	{
+	
+	}
+	
 	@Id
 	@Column(name="EMPID")
 	private int empId;
@@ -41,9 +46,18 @@ public class EmpLeave
 	@Column(name="REASON")
 	private String reason;	
 	
-	public EmpLeave() 
-	{
+	@Column(name="phone")
+	private String phone;
 	
+	
+	
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public int getEmpId() {

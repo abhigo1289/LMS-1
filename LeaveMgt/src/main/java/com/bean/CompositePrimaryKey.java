@@ -11,6 +11,8 @@ public class CompositePrimaryKey implements Serializable
 	private int empId;
 	private Date startDate;
 	
+	public CompositePrimaryKey(){}
+	
 	public CompositePrimaryKey(int empId,Date startDate) 
 	{
 		this.empId=empId;

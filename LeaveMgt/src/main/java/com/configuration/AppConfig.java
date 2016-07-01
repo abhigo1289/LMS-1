@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -17,7 +19,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @ComponentScan({ "com.*" })
 @Import({ SecurityConfig.class })
-public class AppConfig {
+public class AppConfig extends WebMvcConfigurerAdapter {
 
 	@Bean(name = "dataSource")
 	public DriverManagerDataSource dataSource() {
@@ -39,5 +41,9 @@ public class AppConfig {
 		return viewResolver;
 	}
 
+	@Override
+	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+	    registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+	}
 	
 }

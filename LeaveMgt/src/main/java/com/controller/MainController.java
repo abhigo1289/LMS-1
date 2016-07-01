@@ -12,9 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-
+@SessionAttributes("empId")
 @Controller
 public class MainController {
 
@@ -24,6 +25,10 @@ public class MainController {
 		ModelAndView model = new ModelAndView();
 		model.addObject("title", "Spring Security + Hibernate Example");
 		model.addObject("message", "This is default page!");
+		   Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		      String empId = auth.getName();
+				model.addObject("empId",empId);
+		
 		model.setViewName("hello");
 		return model;
 
