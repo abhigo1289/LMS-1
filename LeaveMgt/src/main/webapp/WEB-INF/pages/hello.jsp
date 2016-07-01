@@ -79,7 +79,7 @@
 		<fieldset>
 			<button type="button" ng-click="showDown=true" class="btn btn-info">Add
 				New Leave</button>
-			&nbsp;&nbsp;&nbsp;<a href="approved_leaves.html">Check Approved Leaves</a>
+			&nbsp;&nbsp;&nbsp;<a href="#/approvedleave">Check Approved Leaves</a>
 		</fieldset>
 	</div>
 
@@ -105,9 +105,11 @@
 		</sec:authorize>
 	
 <!-- SCRIPTS -->
-	<!-- <script	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  -->
+	<!-- 
 	<script src="https://code.angularjs.org/1.5.6/angular.min.js"></script>
-  	<script src="https://code.angularjs.org/1.5.6/angular-route.js"></script>
+  	<script src="https://code.angularjs.org/1.5.6/angular-route.js"></script> -->
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
 
 	<script src="<c:url value="/static/js/app.js" />"></script>
 	<script src="<c:url value="/static/js/controller/empCtrl.js" />"></script>
