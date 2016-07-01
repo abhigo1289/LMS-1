@@ -8,21 +8,21 @@ import java.sql.Date;
 
 public class CompositePrimaryKey implements Serializable
 {
-	private int empid;
+	private int empId;
 	private Date startDate;
 	
-	public CompositePrimaryKey(int empid,Date startDate) 
+	public CompositePrimaryKey(int empId,Date startDate) 
 	{
-		this.empid=empid;
+		this.empId=empId;
 		this.startDate=startDate;	
 	}
 
 	public int getEmpid() {
-		return empid;
+		return empId;
 	}
 
-	public void setEmpid(int empid) {
-		this.empid = empid;
+	public void setEmpid(int empId) {
+		this.empId = empId;
 	}
 
 	public Date getStartDate() {
@@ -39,7 +39,7 @@ public class CompositePrimaryKey implements Serializable
 		int result = 1;
 		result = prime * result
 				+ ((startDate == null) ? 0 : startDate.hashCode());
-		result = prime * result + empid;
+		result = prime * result + empId;
 		return result;
 	}
  
@@ -63,7 +63,7 @@ public class CompositePrimaryKey implements Serializable
 		else if (!startDate.equals(other.startDate))
 			return false;
 		
-		if (empid != other.empid)
+		if (empId != other.empId)
 			return false;
 		
 		return true;

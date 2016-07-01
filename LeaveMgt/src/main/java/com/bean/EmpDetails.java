@@ -13,19 +13,24 @@ import javax.persistence.Table;
 @Table(name="EMPDETAILS")
 public class EmpDetails 
 {
+	public EmpDetails() 
+	{
 	
-	public EmpDetails(int empId, String empMail, String empname, Date dateOfJoining, String bloodGrp, String gender,
-			double plannedLeaves, double unPlannedLeaves) {
-		super();
-		this.empMail = empMail;
-		this.empname = empname;
-		this.empId = empId;
-		this.dateOfJoining = dateOfJoining;
-		this.bloodGrp = bloodGrp;
-		this.gender = gender;
-		this.plannedLeaves = plannedLeaves;
-		this.unPlannedLeaves = unPlannedLeaves;
 	}
+	
+	
+//	public EmpDetails(int empId, String empMail, String empname, Date dateOfJoining, String bloodGrp, String gender,
+//			double plannedLeaves, double unPlannedLeaves) {
+//		super();
+//		this.empMail = empMail;
+//		this.empname = empname;
+//		this.empId = empId;
+//		this.dateOfJoining = dateOfJoining;
+//		this.bloodGrp = bloodGrp;
+//		this.gender = gender;
+//		this.plannedLeaves = plannedLeaves;
+//		this.unPlannedLeaves = unPlannedLeaves;
+//	}
 
 	@Id
 	@Column(name="EMPMAIL")
@@ -54,16 +59,13 @@ public class EmpDetails
 	@Column(name="GENDER")
 	String gender;
 	
-	@Column(name="PLANNEDLEAVES")
+	@Column(name="PLANEDLEAVES")
 	double plannedLeaves;
 	
-	@Column(name="UNPLANNEDPLANES")
+	@Column(name="UNPLANEDLEAVES")
 	double unPlannedLeaves;	
 	
-	public EmpDetails() 
-	{
 	
-	}
 
 	public String getEmpMail() {
 		return empMail;
