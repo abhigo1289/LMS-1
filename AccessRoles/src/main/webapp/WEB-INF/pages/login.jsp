@@ -61,16 +61,16 @@
 				</c:if>
 				<div class="form-container">
 					<form class="form-horizontal" name='loginForm' action="<c:url value='/j_spring_security_check' />" method='POST'>
-					<div class="row">
-						<div class="form-group has-feedback">
-							<div class="col-sm-2"></div>							
-							<!-- <label class="control-label col-sm-4">Username :</label>-->
-							<div class="col-sm-8">
-								<span class="glyphicon glyphicon-user form-control-feedback"></span>
-								<input class="empid form-control " type="text" name="empid"  placeholder="Employee Code" >
+						<div class="row">
+							<div class="form-group has-feedback">
+								<div class="col-sm-2"></div>							
+								<!-- <label class="control-label col-sm-4">Username :</label>-->
+								<div class="col-sm-8">
+									<span class="glyphicon glyphicon-user form-control-feedback"></span>
+									<input class="empid form-control " type="text" name="empid"  placeholder="Employee Code" >
+								</div>
 							</div>
 						</div>
-					</div>
 					<div class="row">	
 						<div class="form-group has-feedback">
 							<div class="col-sm-2"></div>

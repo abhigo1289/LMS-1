@@ -4,6 +4,9 @@
 <html>
 <title>Apply Leave Page</title>
 <head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>  
@@ -53,7 +56,7 @@ table
 	<h1>Message : ${message}</h1>
 	-->
 		<h1><center>Leave Management System</center></h1>
-		<div class="container" ng-controller="showController" >
+		<div class="container" ng-controller="applyController" >
 		<fieldset><legend>Employee Details</legend>
 		<table class="table table-borderless  table-condensed">
 			<thead>
@@ -87,59 +90,76 @@ table
 				</tr>
 			</tbody>		
 		</table>
-		</fieldset>		
-		<fieldset>
-			<button type="button" ng-click="showDown=true" class="btn btn-info">Add New Leave</button>&nbsp;&nbsp;&nbsp;<a href="">Check Approved Leaves</a>
 		</fieldset>
-		<div ng-show="showDown"><br>
-			<fieldset><legend>Present/Absent Application Request Details</legend></fieldset>
-			<div class="row col-md-4">
+		
+		
+				
+		<fieldset><br><div>
+			<button type="button" ng-click="applyLeave=true" class="btn btn-info">Add New Leave</button>
+			&nbsp;&nbsp;&nbsp;<a href="">Check Approved Leaves</a>
+			<span ng-show="verifyUser()" class="hideEmp">
+				<button type="button" ng-click="addEmp()" class="btn btn-info">Add New Employee</button>
+				<button type="button" ng-click="approveLeave=true" class="btn btn-info">Approve Leaves Of Employees</button>
+			</span></div>
 			
-				<table class="table table-striped table-nonfluid">
-					<thead>
-						<tr>
-							<th>Date</th>
-							<th>Day</th>
-							<th>Holiday</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="x in holidays">
-							<td>{{x.date}}</td>
-							<td>{{x.day}}</td>
-							<td>{{x.holiday}}</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>	
+		</fieldset>
+		
+		
+		<div ng-show="applyLeave"><br>
+			<fieldset><legend>Present/Absent Application Request Details</legend></fieldset>
 				<form name="myForm">
 					<div class="form-group col-md-8">
 					<div class="row">
 					<h5><b>Application Type :</b></h5>
-						<div class="radio">
-	  						<label><input type="radio" name="leaveType">Planned Leave</label>
-	  						<label><input type="radio" name="leaveType">Unplanned Leave</label>
-	  						<label><input type="radio"  name="leaveType">LWP(Leave Without Pay)</label>
-	  						<label><input type="radio"  ng-click="showDD=true" name="leaveType">On-Duty</label>
-	  						<span class="dropdown">
-	  							  <select  ng-model="ddlReasons" ng-show="showDD" ng-options="r.reason for r in reasons track by r.id">
-	  							  <option></option>
-								  </select>  
-	  						</span><br>
-	  						<label><input type="radio" name="leaveType" ng-click="showDD1=true">UL-PL</label>
-	  						<span class="dropdown">
-	  							<select ng-model="ddlTypeOf" ng-show="showDD1" ng-options="p.type for p in typeOf track by p.id">
-	  								<option></option>
-	  							</select>
-	  						</span>
-	  						
-		  						<label><input type="radio" name="leaveType">FH 1 2016</label>
-		  						<label><input type="radio" ng-click="showdd=true" name="leaveType">Fh 2 2016</label>
-		  					<span class="dropdown">
-	  							<select ng-model="ddlFloaters"  ng-show="showdd" ng-options="f.name for f in floatH track by f.id"></select>
-	  							<option></option>
-	  						</span>
-	  					</div>
+						
+						<table class="table table-nonfluid table-borderless">
+							<tbody>
+								<tr>
+									<td>
+										<input type="radio" name="leaveType">Planned Leave
+									</td>
+									<td>
+										<input type="radio" name="leaveType">Unplanned Leave
+									</td>
+									<td>
+										<input type="radio"  name="leaveType">LWP(Leave Without Pay)	
+									</td>
+								</tr>
+								<tr>	
+									<td>
+										<input type="radio"  ng-click="showDD=true" name="leaveType">On-Duty	
+			  							<span class="dropdown">
+				  							  <select  ng-model="ddlReasons" ng-show="showDD" ng-options="r.reason for r in reasons track by r.id">
+				  							  <option></option>
+											  </select>  
+			  							</span><br>
+									</td>
+		  							<td>
+		  								<input type="radio" name="leaveType" ng-click="showDD1=true">UL-PL
+							  			<span class="dropdown">
+				  							<select ng-model="ddlTypeOf" ng-show="showDD1" ng-options="p.type for p in typeOf track by p.id">
+				  								<option></option>
+				  							</select>
+		  								</span>
+							  		</td>
+		  						</tr>
+		  						<tr>	
+		  							<td>
+		  								<input type="radio" name="leaveType">FH 1 2016
+		  							</td>
+		  							<td>
+		  								<input type="radio" ng-click="showdd=true" name="leaveType">Fh 2 2016
+			  						</td>
+			  						<td>	
+			  							<span class="dropdown">
+				  							<select ng-model="ddlFloaters"  ng-show="showdd" ng-options="f.name for f in floatH track by f.id"></select>
+				  							<option></option>
+				  						</span>
+		  							</td>
+		  						</tr>				  						
+		  					</tbody>	
+		  				</table>	
+		  				
 	  				</div><br><br>
 	  				<div class="row">
 	  					<div class="form-group has-feedback">
@@ -180,15 +200,11 @@ table
 					<div class="row">
 						<div class="form-group">
 							<div class="col-sm-3"><b>Contact No :</b><span style="color:red">*</span></div>
-							<div class="col-sm-3"><b>Residence :</b></div>
-							<div class="col-sm-3"><b>Others :</b></div>
 						</div>
 					</div>
 					
 					<div class="row">
 						<div class="form-group">
-							<div class="col-sm-3"><input type="text" class="form-control"></div>
-							<div class="col-sm-3"><input type="text" class="form-control"></div>
 							<div class="col-sm-3"><input type="text" class="form-control"></div>
 						</div>
 					</div>
@@ -216,8 +232,83 @@ table
 				</div>
 			</form>	
 			
-		</div>
 		
+		<div class="row col-md-4">
+			<br>
+				<table  class="table table-striped table-nonfluid table-bordered">
+					<thead>
+						<tr>
+							<th >Date</th>
+							<th >Day</th>
+							<th >Holiday</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="x in holidays">
+							<td>{{x.date}}</td>
+							<td>{{x.day}}</td>
+							<td>{{x.holiday}}</td>
+						</tr>
+					</tbody>
+				</table>
+							
+		</div>	
+	</div>
+	<div ng-show="approveLeave" >
+		<div class="form-container col-md-8">
+			<form name="myForm" ng-submit="reset()" method="post" >
+				<div class="row" ng-app="regApp" ng-controller="regController">
+					<div class="form-group">
+						<input placeholder="Full Name" type="text"  ng-model="name" ng-minlength=1 ng-maxlength=12 class="form-control" required/>	
+					</div>
+				</div>
+			
+				<div class="row">
+					<div class="form-group">
+						<input placeholder="Email Address" type="text" class="form-control" ng-model="email" ng-minlength=1 ng-maxlength=12  required/>	
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group">
+						<input placeholder="Date Of Joining" type="text" class="form-control" ng-model="doj" ng-minlength=1 ng-maxlength=12  required/>	
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group">
+						<input placeholder="Blood Group" type="text" class="form-control" ng-model="bg" ng-minlength=1 ng-maxlength=12  required/>	
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="form-group">
+						<input placeholder="Gender" type="text" class="form-control" ng-model="gender" ng-minlength=1 ng-maxlength=12  required/>	
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group">
+						<input placeholder="Planned Leaves" type="text" class="form-control" ng-model="pl" ng-minlength=1 ng-maxlength=12  required/>	
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group">
+						<input placeholder="Unplanned Leaves" type="text" class="form-control" ng-model="upl" ng-minlength=1 ng-maxlength=12  required/>	
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary"  value="Submit">Submit</button>	
+					</div>
+				</div>
+				
+			</form>
+		</div>	
+	</div>	
 		<sec:authorize access="hasRole('ROLE_USER')">
 		<!-- For login user -->
 		<c:url value="/j_spring_security_logout" var="logoutUrl" />
@@ -248,7 +339,7 @@ table
 	 $("#edate").datepicker();
  });
 	var app= angular.module('leaveApp',[]);
-	app.controller('showController',function($scope){
+	app.controller('applyController',function($scope){
 		
 		$scope.holidays=[{date:"01 Jan 2016",day:"Friday",holiday:"New Year"},
 		                 {date:"26 Jan 2016",day:"Tuesday",holiday:"Republic day"},
@@ -290,6 +381,17 @@ table
 		$scope.halfday=[{id:1,name:"Ist Half"},{id:2,name:"IInd Half"}];
 		$scope.halfday1=[{id:1,name:"Ist Half"},{id:2,name:"IInd Half"}];
 	});
-
+	var regApp = angular.module('regApp', []);
+	app.controller('regController', function($scope) {
+		$scope.showme=false;
+		$scope.hello=true;
+		$scope.reset = function(){
+		
+		$scope.myForm = $scope.name+" "+$scope.email;
+		$scope.showme=true;
+		$scope.hello=false;
+		};
+		//$scope.reset();
+	});
 </script>
 </html>
