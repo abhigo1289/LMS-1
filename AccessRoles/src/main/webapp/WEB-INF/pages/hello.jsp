@@ -51,14 +51,18 @@ table
 </style>	
 
 <body ng-app="leaveApp" >
-	<!-- <h1>hello</h1>
-	<h1>Title : ${title}</h1>
-	<h1>Message : ${message}</h1>
-	-->
-		<h1><center>Leave Management System</center></h1>
+	<div class="panel-group">
+		<div class="panel panel-info">
+		<div class="panel-heading"><h1><center>Leave Management System</center></h1></div>
+		
+		<br><br>
+		<div class="panel-body" >
 		<div class="container" ng-controller="applyController" >
-		<fieldset><legend>Employee Details</legend>
-		<table class="table table-borderless  table-condensed">
+	
+	<fieldset><legend>Employee Details</legend>
+
+		
+			<table class="table table-borderless  table-condensed">
 			<thead>
 				<tr>
 					<th>Emp Code </th>
@@ -94,40 +98,74 @@ table
 		
 		
 				
-		<fieldset><br><div>
+		<fieldset><br><div  >
 				<button type="button" ng-click="toggleApplyLeave()" class="btn btn-info">Add New Leave</button>
 				<button type="button" ng-click="toggleAddEmp()" class="btn btn-info">Add New Employee</button>
 				<button type="button" ng-click="toggleApproveLeave()" class="btn btn-info">Approve Leaves Of Employees</button>
-				&nbsp;&nbsp;&nbsp;<a href="">Check Approved Leaves</a>
-			
+				&nbsp;&nbsp;&nbsp;<a ng-href="#" ng-click="toggle=true">Check Approved Leaves</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a ng-href="#"  data-target="#myModal" data-toggle="modal">Change Password</a>
+	<div class="modal fade" id="myModal" role="dialog">
+    	<div class="modal-dialog">
+    
+      <!-- Modal content-->
+	      	<div class="modal-content">
+	        	<div class="modal-header">
+	        		<h4 class="modal-title"><center>Change Password</center></h4>
+				</div>
+				<div class="modal-body">
+					<input type="text" class="form-control" placeholder="New Password"><br>
+					<input type="text" class="form-control" placeholder="Confirm Password"><br>
+					<button type="submit"  class="btn btn-primary form-control">Submit</button>
+				</div>
 			</div>
-			
+		</div>
+	</div>
+	<div class="modal fade" id="myModal" role="dialog">
+    	<div class="modal-dialog">
+    
+      <!-- Modal content-->
+	      	<div class="modal-content">
+	        	<div class="modal-header">
+	        		<h4 class="modal-title"><center>Change Password</center></h4>
+				</div>
+				<div class="modal-body">
+					<input type="text" class="form-control" placeholder="New Password"><br>
+					<input type="text" class="form-control" placeholder="Confirm Password"><br>
+					<button type="submit"  class="btn btn-primary form-control">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+				
+			</div>
+			<div ng-show="toggle">sdfsddfas</div>
 		</fieldset>
 		
 		
-		<div ng-show="applyLeave"><br>
-			<fieldset><legend>Present/Absent Application Request Details</legend></fieldset>
-				<form name="myForm">
+		<div class="panel-group" ng-show="applyLeave"><br>
+		<div class="panel panel-success">
+			<div class="panel-heading"><h3>Present/Absent Application Request Details</h3></div>
+				<div class="panel-body"><form name="myForm">
 					<div class="form-group col-md-8">
 					<div class="row">
 					<h5><b>Application Type :</b></h5>
 						
 						<table class="table table-nonfluid table-borderless">
 							<tbody>
-								<tr>
+								<tr >
 									<td>
-										<input type="radio" name="leaveType">Planned Leave
+										<input type="radio" name="leaveType">&nbsp;&nbsp;Planned Leave
 									</td>
 									<td>
-										<input type="radio" name="leaveType">Unplanned Leave
+										<input type="radio" name="leaveType">&nbsp;&nbsp; Unplanned Leave
 									</td>
 									<td>
-										<input type="radio"  name="leaveType">LWP(Leave Without Pay)	
+										<input type="radio"  name="leaveType">&nbsp;&nbsp; LWP(Leave Without Pay)	
 									</td>
 								</tr>
-								<tr>	
+								<tr >	
 									<td>
-										<input type="radio"  ng-click="showDD=true" name="leaveType">On-Duty	
+										<input type="radio"  ng-click="showDD=true" name="leaveType">&nbsp;&nbsp;On-Duty	
 			  							<span class="dropdown">
 				  							  <select  ng-model="ddlReasons" ng-show="showDD" ng-options="r.reason for r in reasons track by r.id">
 				  							  <option></option>
@@ -135,7 +173,7 @@ table
 			  							</span><br>
 									</td>
 		  							<td>
-		  								<input type="radio" name="leaveType" ng-click="showDD1=true">UL-PL
+		  								<input type="radio" name="leaveType" ng-click="showDD1=true">&nbsp;&nbsp;UL-PL
 							  			<span class="dropdown">
 				  							<select ng-model="ddlTypeOf" ng-show="showDD1" ng-options="p.type for p in typeOf track by p.id">
 				  								<option></option>
@@ -145,10 +183,10 @@ table
 		  						</tr>
 		  						<tr>	
 		  							<td>
-		  								<input type="radio" name="leaveType">FH 1 2016
+		  								<input type="radio" name="leaveType">&nbsp;&nbsp;FH 1 2016
 		  							</td>
 		  							<td>
-		  								<input type="radio" ng-click="showdd=true" name="leaveType">Fh 2 2016
+		  								<input type="radio" ng-click="showdd=true" name="leaveType">&nbsp;&nbsp;Fh 2 2016
 			  						</td>
 			  						<td>	
 			  							<span class="dropdown">
@@ -205,7 +243,7 @@ table
 					
 					<div class="row">
 						<div class="form-group">
-							<div class="col-sm-3"><input type="text" class="form-control"></div>
+							<div class="col-sm-3"><input ng-pattern="/^[0-9]{1,10}$/" type="text" class="form-control"></div>
 						</div>
 					</div>
 					
@@ -235,7 +273,7 @@ table
 		
 		<div class="row col-md-4">
 			<br>
-				<table  class="table table-striped table-nonfluid table-bordered">
+				<table  class="table table-striped table-nonfluid table-bordered info">
 					<thead>
 						<tr>
 							<th >Date</th>
@@ -245,52 +283,58 @@ table
 					</thead>
 					<tbody>
 						<tr ng-repeat="x in holidays">
-							<td>{{x.date}}</td>
-							<td>{{x.day}}</td>
-							<td>{{x.holiday}}</td>
+							<td  >{{x.date}}</td>
+							<td >{{x.day}}</td>
+							<td >{{x.holiday}}</td>
 						</tr>
 					</tbody>
 				</table>
 							
 		</div>	
-	</div>
-	<div ng-show="addEmp" >
+	</div></div></div><br>
+	<div class="panel-group " ng-show="addEmp" >
+	<div class="panel panel-danger">
 	
-	<br><br>
 	
-	<fieldset><legend>Add Information About Employee</legend></fieldset>
-		<div class="form-container col-md-8">
-			<form name="myForm" ng-submit="reset()" method="post" >
+	<div class="panel-heading"><h3>Add Information About Employee</h3></div>
+		<div class="panel-body"><div class="form-container col-md-8 " ng-controller="myCtrl">
+	
+			<form name="myForm" ng-submit="reset()" method="post"  ng-href="http://localhost:8080/AccessRoles/welcome/{{name}}">
 				<div class="row"  >
 					<div class="form-group">
-						<input placeholder="Full Name" type="text"  ng-model="name" ng-minlength=1 ng-maxlength=12 class="form-control" required/>	
+						<input placeholder="Full Name" type="text"  ng-model="name" ng-minlength=1 ng-maxlength=30 class="form-control" required/>	
 					</div>
 				</div>
 			
 				<div class="row">
 					<div class="form-group">
-						<input placeholder="Email Address" type="text" class="form-control" ng-model="email" ng-minlength=1 ng-maxlength=12  required/>	
+						<input placeholder="Email Address" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" type="text" class="form-control" ng-model="email" ng-minlength=1 ng-maxlength=30  required/>	
 					</div>
 				</div>
 				
 				<div class="row">
 					<div class="form-group">
-						<input placeholder="Date Of Joining" type="text" class="form-control" ng-model="doj" ng-minlength=1 ng-maxlength=12  required/>	
+						<input placeholder="Date Of Joining" type="text" id="doj" class="form-control" ng-model="doj" ng-minlength=1 ng-maxlength=12  required/>	
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="form-group">
-						<input placeholder="Blood Group" type="text" class="form-control" ng-model="bg" ng-minlength=1 ng-maxlength=12  required/>	
+						<input placeholder="Blood Group" type="text" class="form-control" ng-model="bg" ng-minlength=1 ng-maxlength=3  required/>	
 					</div>
 				</div>
 
 
 				<div class="row">
 					<div class="form-group">
-						<input placeholder="Gender" type="text" class="form-control" ng-model="gender" ng-minlength=1 ng-maxlength=12  required/>	
+						<div class="radio">Gender : 
+							<label ><input type="radio"  value="Male">Male</label>
+							<label ><input type="radio"  value="Female">Female</label>
+						</div>		
 					</div>
 				</div>
+				
+				
 				
 				<div class="row">
 					<div class="form-group">
@@ -306,18 +350,19 @@ table
 				
 				<div class="row">
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary"  value="Submit">Submit</button>	
+						<button type="submit" class="btn btn-primary"  value="Submit">Submit</button>
+						<button type="reset" class="btn btn-danger">Clear text</button>	
 					</div>
 				</div>
 				
-			</form>
+			</form></div>
 		</div>	
-	</div>	
+	</div>	</div>
 	<div ng-show="approveLeave">asdasda</div>
 		<sec:authorize access="hasRole('ROLE_USER')">
 		<!-- For login user -->
 		<c:url value="/j_spring_security_logout" var="logoutUrl" />
-		<form action="${logoutUrl}" method="post" id="logoutForm">
+		<form action="${logoutUrl}"  method="post" id="logoutForm">
 			<input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}" />
 		</form>
@@ -330,8 +375,11 @@ table
 		
 				<a href="javascript:formSubmit()"> Logout</a>
 		</c:if>
+		
 	</sec:authorize>
 	</div>
+	</div>
+	</div></div>
 </body>
 
 <!--<script src="/js/app.js"></script>
@@ -343,9 +391,21 @@ table
  $(function(){
 	 $("#edate").datepicker();
  });
- 
+ $(function(){
+	 $("#doj").datepicker();
+ });
 
 	var app= angular.module('leaveApp',[]);
+	
+	app.controller('myCtrl',function($scope){
+		$scope.showme=false;
+		$scope.hello=true;
+		$scope.reset = function(){
+		$scope.showme=true;
+		$scope.hello=false;
+		};
+	});
+	
 	app.controller('applyController',function($scope){
 		
 		$scope.applyLeave=false;

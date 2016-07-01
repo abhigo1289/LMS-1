@@ -87,6 +87,13 @@
 							<button type="submit" class="btn btn-primary btn-block">Submit</button>
 						</div>
 					</div>	
+					
+					<div class="row">
+						<div class="form-group col-xs-3">
+							<a href="#" ng-click="alert()">Forgot Password</a>
+						</div>
+					</div>
+					
 						<input type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" />
 					</form>
