@@ -4,18 +4,23 @@
 <html>
 <title>Apply Leave Page</title>
 <head>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>  
+   
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	
+	<script>
+
+</script>
 </head>
 <style>
 
@@ -131,7 +136,7 @@ table
 		  						<label><input type="radio" name="leaveType">FH 1 2016</label>
 		  						<label><input type="radio" ng-click="showdd=true" name="leaveType">Fh 2 2016</label>
 		  					<span class="dropdown">
-	  							<select ng-model="ddlFloaters" ng-show="showdd" ng-options="f.name for f in floatH track by f.id"></select>
+	  							<select ng-model="ddlFloaters"  ng-show="showdd" ng-options="f.name for f in floatH track by f.id"></select>
 	  							<option></option>
 	  						</span>
 	  					</div>
@@ -148,10 +153,12 @@ table
 							<div class="col-sm-3">Half day <span><input type="checkbox"></span></div>
 						</div>
 					</div>
+		
 					<div class="row">
 						<div class="form-group">
-							<div class="col-sm-3"><input type="text" ></div>
-							<div class="dropdown col-sm-3"><select ng-model="ddlHf1" ng-options="hf.name for hf in halfday track by hf.id"></select></div>
+						
+							<div class="col-sm-3 input-group-date" ><input type="text" class="form-control" id="sdate"></div>
+							<div class="dropdown col-sm-3"><select ng-model="ddlHf1" class="form-control" ng-options="hf.name for hf in halfday track by hf.id"></select></div>
 						</div>
 					</div>
 					<br>		
@@ -163,8 +170,8 @@ table
 					</div>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-sm-3"><input type="text" ></div>
-							<div class="dropdown col-sm-3"><select ng-model="ddlHf1" ng-options="hf.name for hf in halfday track by hf.id"></select></div>
+							<div class="col-sm-3"><input type="text" class="form-control" id="edate"></div>
+							<div class="dropdown col-sm-3"><select ng-model="ddlHf2" class="form-control" ng-options="hf1.name for hf1 in halfday1 track by hf1.id"></select></div>
 						</div>
 					</div>		
 					
@@ -180,9 +187,9 @@ table
 					
 					<div class="row">
 						<div class="form-group">
-							<div class="col-sm-3"><input type="text"></div>
-							<div class="col-sm-3"><input type="text"></div>
-							<div class="col-sm-3"><input type="text"></div>
+							<div class="col-sm-3"><input type="text" class="form-control"></div>
+							<div class="col-sm-3"><input type="text" class="form-control"></div>
+							<div class="col-sm-3"><input type="text" class="form-control"></div>
 						</div>
 					</div>
 					
@@ -204,10 +211,11 @@ table
 					
 					<div class="row">
 						<button type="submit" class="btn btn-primary">Submit</button>
-						<button type="button" class="btn btn-danger">Clear text</button>
+						<button type="reset" class="btn btn-danger">Clear text</button>
 					</div>
 				</div>
 			</form>	
+			
 		</div>
 		
 		<sec:authorize access="hasRole('ROLE_USER')">
@@ -229,9 +237,16 @@ table
 	</sec:authorize>
 	</div>
 </body>
+
 <!--<script src="/js/app.js"></script>
 <script src="/js/controller/controller.js"></script>-->
  <script>
+ $(function(){
+		$("#sdate").datepicker();
+	});
+ $(function(){
+	 $("#edate").datepicker();
+ });
 	var app= angular.module('leaveApp',[]);
 	app.controller('showController',function($scope){
 		
@@ -273,8 +288,8 @@ table
 		               {id:1,name:"14-Nov-2016 - Monday - Guru Nanak Jayanti"},
 		               {id:1,name:"12-Dec-2016 - Monday - Id-E-Milad,Datta Jayanti "}];
 		$scope.halfday=[{id:1,name:"Ist Half"},{id:2,name:"IInd Half"}];
+		$scope.halfday1=[{id:1,name:"Ist Half"},{id:2,name:"IInd Half"}];
 	});
-
 
 </script>
 </html>
