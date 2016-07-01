@@ -52,7 +52,7 @@ public class MainController {
 		ModelAndView model = new ModelAndView();
 		model.addObject("title", "Spring Security + Hibernate Example");
 		model.addObject("message", "This page is for ROLE_ADMIN only!");
-		model.setViewName("admin");
+		model.setViewName("hello");
 
 		return model;
 
