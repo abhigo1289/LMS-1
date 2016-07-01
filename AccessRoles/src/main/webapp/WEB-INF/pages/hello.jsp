@@ -95,12 +95,12 @@ table
 		
 				
 		<fieldset><br><div>
-			<button type="button" ng-click="applyLeave=true" class="btn btn-info">Add New Leave</button>
-			&nbsp;&nbsp;&nbsp;<a href="">Check Approved Leaves</a>
-			<span ng-show="verifyUser()" class="hideEmp">
-				<button type="button" ng-click="addEmp()" class="btn btn-info">Add New Employee</button>
-				<button type="button" ng-click="approveLeave=true" class="btn btn-info">Approve Leaves Of Employees</button>
-			</span></div>
+				<button type="button" ng-click="toggleApplyLeave()" class="btn btn-info">Add New Leave</button>
+				<button type="button" ng-click="toggleAddEmp()" class="btn btn-info">Add New Employee</button>
+				<button type="button" ng-click="toggleApproveLeave()" class="btn btn-info">Approve Leaves Of Employees</button>
+				&nbsp;&nbsp;&nbsp;<a href="">Check Approved Leaves</a>
+			
+			</div>
 			
 		</fieldset>
 		
@@ -254,10 +254,14 @@ table
 							
 		</div>	
 	</div>
-	<div ng-show="approveLeave" >
+	<div ng-show="addEmp" >
+	
+	<br><br>
+	
+	<fieldset><legend>Add Information About Employee</legend></fieldset>
 		<div class="form-container col-md-8">
 			<form name="myForm" ng-submit="reset()" method="post" >
-				<div class="row" ng-app="regApp" ng-controller="regController">
+				<div class="row"  >
 					<div class="form-group">
 						<input placeholder="Full Name" type="text"  ng-model="name" ng-minlength=1 ng-maxlength=12 class="form-control" required/>	
 					</div>
@@ -309,6 +313,7 @@ table
 			</form>
 		</div>	
 	</div>	
+	<div ng-show="approveLeave">asdasda</div>
 		<sec:authorize access="hasRole('ROLE_USER')">
 		<!-- For login user -->
 		<c:url value="/j_spring_security_logout" var="logoutUrl" />
@@ -338,8 +343,32 @@ table
  $(function(){
 	 $("#edate").datepicker();
  });
+ 
+
 	var app= angular.module('leaveApp',[]);
 	app.controller('applyController',function($scope){
+		
+		$scope.applyLeave=false;
+		$scope.approveLeave=false;
+		$scope.addEmp=false;
+		
+		$scope.toggleApplyLeave=function(){
+			$scope.applyLeave=!$scope.applyLeave;
+			$scope.approveLeave=false;
+			$scope.addEmp=false;
+		};
+		$scope.toggleApproveLeave=function(){
+			$scope.applyLeave=false;
+			$scope.approveLeave=!$scope.aprroveLeave;
+			$scope.addEmp=false;
+			
+		};
+		$scope.toggleAddEmp=function(){
+			$scope.applyLeave=false;
+			$scope.approveLeave=false;
+			$scope.addEmp=!$scope.addEmp;
+			
+		};
 		
 		$scope.holidays=[{date:"01 Jan 2016",day:"Friday",holiday:"New Year"},
 		                 {date:"26 Jan 2016",day:"Tuesday",holiday:"Republic day"},
@@ -380,18 +409,12 @@ table
 		               {id:1,name:"12-Dec-2016 - Monday - Id-E-Milad,Datta Jayanti "}];
 		$scope.halfday=[{id:1,name:"Ist Half"},{id:2,name:"IInd Half"}];
 		$scope.halfday1=[{id:1,name:"Ist Half"},{id:2,name:"IInd Half"}];
-	});
-	var regApp = angular.module('regApp', []);
-	app.controller('regController', function($scope) {
-		$scope.showme=false;
-		$scope.hello=true;
-		$scope.reset = function(){
 		
-		$scope.myForm = $scope.name+" "+$scope.email;
-		$scope.showme=true;
-		$scope.hello=false;
-		};
-		//$scope.reset();
+		
+		
+		
+		
 	});
+	
 </script>
 </html>
