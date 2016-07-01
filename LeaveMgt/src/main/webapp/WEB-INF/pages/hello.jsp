@@ -2,6 +2,17 @@
 <%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	HttpSession ses=request.getSession();
+		String id=(String)ses.getAttribute("empId");
+		if(id.equals("anonymousUser"))
+		{
+			response.sendRedirect("/AccessRoles/login");
+		}
+
+
+%>
+
 
 <html>
 
@@ -32,7 +43,7 @@
 	<h1>Message : ${message}</h1>
 	-->
 	<h1>
-		from session
+		from session ${count }
 		<script>
 			var id = ${empId}; //${empId} is returned from spring framework
 		</script>

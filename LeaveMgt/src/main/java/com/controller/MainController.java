@@ -6,6 +6,8 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -15,20 +17,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-@SessionAttributes("empId")
+@SessionAttributes({"empId","count"})
 @Controller
 public class MainController {
 
 	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
-	public ModelAndView defaultPage() {
-
+	public ModelAndView defaultPage()
+	{
+		int i=0;
 		ModelAndView model = new ModelAndView();
 		model.addObject("title", "Spring Security + Hibernate Example");
 		model.addObject("message", "This is default page!");
 		   Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		      String empId = auth.getName();
+		      for (GrantedAuthority authority : SecurityContextHolder.getContext().getAuthentication().getAuthorities())
+		      {
+		          String userRole = authority.getAuthority();
+		          System.out.println(userRole);
+		          i++;
+		          }
+		      System.out.println("role count "+i);
+		      
 				model.addObject("empId",empId);
-		
+				model.addObject("count",i);
+		System.out.println("the current id "+empId);
 		model.setViewName("hello");
 		return model;
 

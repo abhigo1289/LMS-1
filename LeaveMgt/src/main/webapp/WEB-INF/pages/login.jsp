@@ -1,5 +1,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page session="true"%>
+
+
+<%
+	HttpSession ses=request.getSession();
+		
+		if(ses!=null && ses.getAttribute("empid")!=null && !ses.getAttribute("empid").equals("anonymousUser"))
+		{
+		
+			response.sendRedirect("/AccessRoles/welcome");
+		}
+
+
+%>
+
+
+
 <html>
 <head>
 <title>Login Page</title>
